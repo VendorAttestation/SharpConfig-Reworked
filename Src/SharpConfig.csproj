@@ -1,18 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <Authors>Cemalettin Dervis, Michael Tsai</Authors>
+    <Authors>Cemalettin Dervis, Michael Tsai, Justxn</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/huanlin/SharpConfig.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Copyright>Copyright Cemalettin Dervis, Michael Tsai</Copyright>
+    <Copyright>Copyright Cemalettin Dervis, Michael Tsai, Justxn</Copyright>
     <Description>An easy to use CFG/INI configuration library for .NET.</Description>
     <PackageIcon>SharpConfigLogo.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/huanlin/SharpConfig</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/TheVisual/SharpConfig</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,13 +28,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MinVer" Version="4.3.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,10 @@
 # Change Log
 
+## v4.1.0 2024-06-14
+- Changed target framework to .NET 8.
+- Upgraded dependencies.
+- Simplified the code.
+
 ## v4.1.0 2024-01-12
 
 - Fixed [issue #1](https://github.com/huanlin/SharpConfig/issues/1): Setting is not saved if it does not exist in the config file.

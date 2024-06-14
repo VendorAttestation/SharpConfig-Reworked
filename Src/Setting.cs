@@ -498,7 +498,7 @@ namespace SharpConfig
       return obj;
     }
 
-    #endregion
+        #endregion
 
     #region SetValue
 
@@ -509,42 +509,41 @@ namespace SharpConfig
     /// <param name="value">The value to set.</param>
     public void SetValue(object value)
     {
-      if (value == null)
-      {
-        SetEmptyValue();
-        return;
-      }
-
-      var type = value.GetType();
-      if (type.IsArray)
-      {
-        var elementType = type.GetElementType();
-        if (elementType != null && elementType.IsArray)
-          throw CreateJaggedArraysNotSupportedEx(type.GetElementType());
-
-        var values = value as Array;
-        if (values != null)
+        if (value == null)
         {
-          var strings = new string[values.Length];
-
-          for (int i = 0; i < values.Length; i++)
-          {
-            object elemValue = values.GetValue(i);
-            var converter = Configuration.FindTypeStringConverter(elemValue.GetType());
-            strings[i] = GetValueForOutput(converter.ConvertToString(elemValue));
-          }
-
-          RawValue = $"{{{string.Join(Configuration.ArrayElementSeparator.ToString(), strings)}}}";
+            SetEmptyValue();
+            return;
         }
-        if (values != null) mCachedArraySize = values.Length;
-        mShouldCalculateArraySize = false;
-      }
-      else
-      {
-        var converter = Configuration.FindTypeStringConverter(type);
-        RawValue = converter.ConvertToString(value);
-        mShouldCalculateArraySize = true;
-      }
+
+        var type = value.GetType();
+        if (type.IsArray)
+        {
+            var elementType = type.GetElementType();
+            if (elementType != null && elementType.IsArray)
+                throw CreateJaggedArraysNotSupportedEx(elementType);
+
+            var values = value as Array;
+            if (values != null)
+            {
+                var strings = new string[values.Length];
+                for (int i = 0; i < values.Length; i++)
+                {
+                    object elemValue = values.GetValue(i);
+                    var converter = Configuration.FindTypeStringConverter(elemValue.GetType());
+                    strings[i] = GetValueForOutput(converter.ConvertToString(elemValue));
+                }
+
+                RawValue = $"{{{string.Join(Configuration.ArrayElementSeparator.ToString(), strings)}}}";
+                mCachedArraySize = values.Length;
+                mShouldCalculateArraySize = false;
+            }
+        }
+        else
+        {
+            var converter = Configuration.FindTypeStringConverter(type);
+            RawValue = GetValueForOutput(converter.ConvertToString(value));
+            mShouldCalculateArraySize = true;
+        }
     }
 
     private void SetEmptyValue()
@@ -554,42 +553,43 @@ namespace SharpConfig
       mShouldCalculateArraySize = false;
     }
 
-    #endregion
+        #endregion
 
     private static string GetValueForOutput(string rawValue)
     {
-      if (Configuration.OutputRawStringValues)
+        // Return the raw value if configured to output raw string values
+        if (Configuration.OutputRawStringValues)
+            return rawValue;
+
+        // Return the raw value if it is enclosed in curly braces or double quotes
+        if ((rawValue.StartsWith("{") && rawValue.EndsWith("}")) ||
+            (rawValue.StartsWith("\"") && rawValue.EndsWith("\"")))
+        {
+            return rawValue;
+        }
+
+        // Enclose the raw value in double quotes if it contains spaces or valid comment characters and inline comments are not ignored
+        if (rawValue.IndexOf(" ", StringComparison.Ordinal) >= 0 ||
+            (rawValue.IndexOfAny(Configuration.ValidCommentChars) >= 0 && !Configuration.IgnoreInlineComments))
+        {
+            return $"\"{rawValue}\"";
+        }
+
         return rawValue;
-
-      if (rawValue.StartsWith("{") && rawValue.EndsWith("}"))
-        return rawValue;
-
-      if (rawValue.StartsWith("\"") && rawValue.EndsWith("\""))
-        return rawValue;
-
-      if (
-        rawValue.IndexOf(" ", StringComparison.Ordinal) >= 0 || (
-        rawValue.IndexOfAny(Configuration.ValidCommentChars) >= 0 &&
-        !Configuration.IgnoreInlineComments))
-      {
-        rawValue = "\"" + rawValue + "\"";
-      }
-
-      return rawValue;
     }
 
-    /// <summary>
-    /// Gets the element's expression as a string.
-    /// An example for a section would be "[Section]".
-    /// </summary>
-    /// <returns>The element's expression as a string.</returns>
-    protected override string GetStringExpression()
-    {
+        /// <summary>
+        /// Gets the element's expression as a string.
+        /// An example for a section would be "[Section]".
+        /// </summary>
+        /// <returns>The element's expression as a string.</returns>
+   protected override string GetStringExpression()
+   {
       if (Configuration.SpaceBetweenEquals)
         return $"{Name} = {GetValueForOutput(RawValue)}";
       else
         return $"{Name}={GetValueForOutput(RawValue)}";
-    }
+   }
 
     private static ArgumentException CreateJaggedArraysNotSupportedEx(Type type)
     {
