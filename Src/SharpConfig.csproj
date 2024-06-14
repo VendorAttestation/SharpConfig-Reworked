@@ -6,13 +6,14 @@
     <Nullable>disable</Nullable>
     <Authors>Cemalettin Dervis, Michael Tsai, Justxn</Authors>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/huanlin/SharpConfig.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/TheVisual/SharpConfig.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Copyright>Copyright Cemalettin Dervis, Michael Tsai, Justxn</Copyright>
     <Description>An easy to use CFG/INI configuration library for .NET.</Description>
     <PackageIcon>SharpConfigLogo.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/TheVisual/SharpConfig</PackageProjectUrl>
+    <PackageId>$(AssemblyName)-Reworked</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
