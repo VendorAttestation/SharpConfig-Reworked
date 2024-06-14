@@ -4,6 +4,7 @@
 - Changed target framework to .NET 8.
 - Upgraded dependencies.
 - Simplified the code.
+- Removed MinVer
 
 ## v4.1.0 2024-01-12
 
