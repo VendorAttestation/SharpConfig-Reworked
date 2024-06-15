@@ -6,9 +6,13 @@ You can use SharpConfig to read, modify and save configuration files and streams
 
 The library is fully compatible with .NET, .NET Core and the Mono Framework.
 
+
+
+Nuget Download: https://www.nuget.org/packages/SharpConfig-Reworked
+
 ---
 
-**Note:** You are looking at a fork of [SharpConfig](https://github.com/huanlin/SharpConfig). This fork is started since June 2024 by Justxn. See [CHANGELOG.md](https://github.com/TheVisual/SharpConfig/blob/master/CHANGELOG.md) for more information.
+**Note:** You are looking at a fork of [SharpConfig](https://github.com/TheVisual/SharpConfig-Reworked). This fork is started since June 2024 by Justxn. See [CHANGELOG.md](https://github.com/TheVisual/SharpConfig/blob/master/CHANGELOG.md) for more information.
 
 ---
 
