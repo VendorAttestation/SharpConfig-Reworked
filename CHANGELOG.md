@@ -1,6 +1,6 @@
 # Change Log
 
-## v4.1.0 2024-06-14
+## v4.1.1 2024-06-14
 - Changed target framework to .NET 8.
 - Upgraded dependencies.
 - Simplified the code.
