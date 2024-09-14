@@ -12,7 +12,7 @@ Nuget Download: https://www.nuget.org/packages/SharpConfig-Reworked
 
 ---
 
-**Note:** You are looking at a fork of [SharpConfig](https://github.com/TheVisual/SharpConfig-Reworked). This fork is started since June 2024 by Justxn. See [CHANGELOG.md](https://github.com/TheVisual/SharpConfig/blob/master/CHANGELOG.md) for more information.
+**Note:** You are looking at a fork of [SharpConfig](https://github.com/VendorAttestation/SharpConfig-Reworked). This fork is started since June 2024 by Justxn. See [CHANGELOG.md](https://github.com/VendorAttestation/SharpConfig/blob/master/CHANGELOG.md) for more information.
 
 ---
 
